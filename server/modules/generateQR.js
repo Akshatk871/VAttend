@@ -36,7 +36,7 @@ function qrt() {
   let waitingTime = seconds<=30000?30000-seconds:60000-seconds;
 
   setTimeout(
-    ()=> {
+    ()=> { 
       generateQR();
       setInterval(generateQR, 30000)
     }

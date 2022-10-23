@@ -4,6 +4,12 @@ const express = require('express');
 connectToMongo();
 
 
+// The below lines of code are for testing the qrcode generator
+
+// const qr = require('./qrtest');
+// qr();
+
+
 // setting up express server
 
 const app = express();

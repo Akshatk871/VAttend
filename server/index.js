@@ -9,7 +9,7 @@ connectToMongo();
 // const qr = require('./qrtest');
 // qr();
 
-const generateQR = require('./routes/generateQR');
+const generateQR = require('./modules/generateQR');
 generateQR();
 
 
@@ -23,7 +23,7 @@ app.use(express.json());
 
 // Avialable Routes
 app.use('/api/auth', require('./routes/auth'));
-app.use('/api/scan', require('./routes/generateQR'));
+app.use('/api/scan', require('./routes/scan'));
 //app.use('/api/notes', require('./routes/notes'));
 
 app.listen(port, ()=>{

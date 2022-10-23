@@ -27,6 +27,19 @@ async function generateQR() {
 }
 
 function qrt() {
-  setInterval(generateQR, 30000);
+
+  //firing the initial case when qrt is called
+  generateQR();
+
+  //setting the interval
+  let seconds = new Date().getSeconds() * 1000;
+  let waitingTime = seconds<=30000?30000-seconds:60000-seconds;
+
+  setTimeout(
+    ()=> {
+      generateQR();
+      setInterval(generateQR, 30000)
+    }
+  , waitingTime);
 }
 module.exports = qrt;

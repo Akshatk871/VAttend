@@ -31,9 +31,9 @@ const Login = () => {
           <div className="social-login">
             <h3>log in via</h3>
             <div className="social-icons">
-              <a className="social-login__icon fab fa-instagram"></a>
-              <a className="social-login__icon fab fa-facebook"></a>
-              <a  className="social-login__icon fab fa-twitter"></a>
+              <a href="https://www.google.com" className="social-login__icon fab fa-instagram"> </a>
+              <a href="https://www.google.com" className="social-login__icon fab fa-facebook"> </a>
+              <a href="https://www.google.com" className="social-login__icon fab fa-twitter"> </a>
             </div>
           </div>
         </div>

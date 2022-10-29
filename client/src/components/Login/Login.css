@@ -18,7 +18,7 @@
 	background: linear-gradient(90deg, #5D54A4, #7C78B8);		
 	position: relative;	
 	height: 600px;
-	width: 360px;	
+	max-width: 100%;	
 	box-shadow: 0px 0px 24px #5C5696;
 }
 
@@ -37,6 +37,7 @@
 	z-index: 0;
 	-webkit-clip-path: inset(0 0 0 0);
 	clip-path: inset(0 0 0 0);	
+	overflow: hidden;
 }
 
 .screen__background__shape {

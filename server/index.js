@@ -4,25 +4,7 @@ var cors = require('cors');
 
 connectToMongo();
 
-
-// The below lines of code are for testing the qrcode generator
-
-// const qr = require('./qrtest');
-// qr();
-
-//const generateQR = require('./modules/generateQR');
-//generateQR();
-
-
 // setting up express server
-
-setInterval(()=>{
-    let  currentdate = new Date();
-
-    let seconds = currentdate.getSeconds();
-    console.log(seconds);
-}, 1000);
-
 const app = express();
 const port = 9000;
 

@@ -14,7 +14,8 @@ const distance = require('../modules/distance')
 const JWT_SECRET = process.env.JWT_SECRET;
 const ADDRESS_SECRET = process.env.ADDRESS_SECRET;
 
-const office_location = [20.250041990505274, 85.80019851562446];
+const office_location = [process.env.OFFICE_LATITUDE, process.env.OFFICE_LONGITUDE];
+const minimum_distance = [process.env.MINIMUM_DISTANCE]
 
 router.route('/:id')
 .get(fetchuser, async (req, res)=>{
@@ -34,7 +35,7 @@ router.route('/:id')
         
         let present = false;
 
-        if(dist<2) present = true; 
+        if(dist<minimum_distance) present = true; 
 
         let record = await Record.create( {
             user: req.user.id,

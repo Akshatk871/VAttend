@@ -31,7 +31,7 @@ const QR = () => {
 
     const json = await response.json();
     if (json.success) {
-      updateQR({ imageURL: json.imgurl, url: json.uriShort });
+      updateQR({ imageURL: json.imgurl, url: json.uri });
     }
   };
   

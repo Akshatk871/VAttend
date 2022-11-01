@@ -18,17 +18,15 @@ router.route("/")
 
     try {
         datetime = dateM();
-        console.log(datetime);
+
       
         // Crating a salt from bcrypt
         var sURI = md5(datetime+ADDRESS_SECRET);
         const securedURI = sURI.replaceAll("/", "slash");
       
         const uri = "http://192.168.29.73:9000/api/scan/" + securedURI;
-        console.log(uri);
-        const uriShort = "api/scan/"+securedURI;
         QRCode.toDataURL(uri, function (err, imgurl) {
-          res.json({success: true, imgurl, uriShort});
+          res.json({success: true, imgurl, uri});
         });
     
       } catch (error) {

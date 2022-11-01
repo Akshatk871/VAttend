@@ -8,7 +8,8 @@ const Scanned = () => {
     const {url} = context;
 
     // Setting up the host
-    var host = "http://192.168.29.73:9000/"+url;
+    var host = url;
+    console.log(url);
 
     let navigate = useNavigate();
 

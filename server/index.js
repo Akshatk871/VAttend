@@ -25,6 +25,7 @@ app.use(express.json());
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/scan', require('./routes/scan'));
 app.use('/api/records', require('./routes/records'));
+app.use('/api/users', require('./routes/users'));
 
 app.listen(port, ()=>{
     console.log("Server started at port: "+port);

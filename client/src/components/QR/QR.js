@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import "./QR.css";
 
 const QR = () => {
   
@@ -39,11 +40,13 @@ const QR = () => {
   }, [refreshTime, waitingTime])
 
   return (
-    <div className="container">
-      <img src={imageURL} width="400px" alt="QRCode"/>
+    <div className="qr-container">
+      <h4>Scan Code To Mark Attendence</h4>
+      <img className="qr-code" src={imageURL} alt="QRCode"/>
+      <h4>OR</h4>
       <Link to={url}>
       <button
-        className="btn btn-outline-light max-2"
+        className="btn btn-outline-light max-2 attendence-btn"
       >
         Mark Attendence!
       </button>

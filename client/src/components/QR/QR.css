@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;600;700;900&display=swap');
+
+.qr-container{
+    text-align: center;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+}
+
+h4{
+    font-weight: 700;
+}
+
+.qr-code{
+    width: 20rem;
+    display: block;
+    margin: 1rem auto;
+}
+
+.attendence-btn{
+    margin: 1rem auto;
+}

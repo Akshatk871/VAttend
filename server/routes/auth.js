@@ -95,12 +95,14 @@ router.route('/login')
 ], async (req, res)=>{
     // Validating if employeeid/password/name is acceptable
     const errors = validationResult(req);
+    let success = false;
 
     if(!errors.isEmpty()){
         return res.status(400).json({errors: errors.array()});
     }
 
     const {employee_id, password} = req.body;
+    
 
     try{
         let user = await User.findOne({employee_id}).exec();
@@ -121,7 +123,8 @@ router.route('/login')
         }
 
         const authtoken = jwt.sign(payload, JWT_SECRET);
-        res.json({authtoken});
+        success = true;
+        res.json({success, authtoken});
 
     }catch(error){
         console.log(error);

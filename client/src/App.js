@@ -6,12 +6,16 @@ import Navbar from "./components/Navbar/Navbar";
 import Login from "./components/Login/Login";
 import Home from "./components/Home/Home";
 import About from "./components/About/About";
+import AlertState from "./context/alerts/AlertState";
+import Alert from "./components/Alert/Alert";
 
 function App() {
   return (
     <>
+    <AlertState>
       <Router>
         <Navbar />
+        <Alert />
         <div className="container">
           <Routes>
             <Route exact path="/" element={<Home />}></Route>
@@ -20,6 +24,7 @@ function App() {
           </Routes>
         </div>
       </Router>
+      </AlertState>
     </>
   );
 }

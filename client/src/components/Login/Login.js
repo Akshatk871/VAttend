@@ -1,7 +1,64 @@
-import React from "react";
+import React, { useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Login.css";
+import AlertContext from "../../context/alerts/alertContext";
 
 const Login = () => {
+
+  const host = "http://192.168.29.73:9000";
+  let navigate = useNavigate();
+
+  // Context for alert
+  // This is for Alert Context
+  const contextAlert = useContext(AlertContext);
+  const {updateAlert} = contextAlert;
+  const [hidden, setHidden] = useState("d-none");
+
+  const [login, updateLogin] = useState({employee_id: "", password: ""})
+  const {employee_id, password} = login;
+
+
+  const handleClick = async (event) => {
+    event.preventDefault();
+    console.log(employee_id+"       "+ password);
+
+    const response = await fetch(`${host}/api/auth/login`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ employee_id: employee_id, password: password })
+    });
+    const json = await response.json();
+    console.log(json.authtoken);
+    
+    if(json.success){
+        // Save auth-token
+        localStorage.setItem('token', json.authtoken);
+        navigate("/");
+        updateAlert("Logged In Successfully!!", "success");
+    }
+    else {
+        updateLogin({employee_id: "", password: ""})
+        setHidden("");
+        // updateAlert("Login Failed", "danger");
+        setTimeout(()=>{
+            setHidden("d-none");
+        }, 5000);
+    }
+
+  };
+
+
+
+
+  const handleChange = (event) => {
+    let name = event.target.name;
+    let value = event.target.value;
+
+    updateLogin({ ...login, [name]: value });
+  };
+
   return (
     <div className="container">
       <div className="screen">
@@ -12,7 +69,10 @@ const Login = () => {
               <input
                 type="text"
                 className="login__input"
-                placeholder="Registration ID"
+                placeholder="Employee ID"
+                name="employee_id"
+                value={login.employee_id}
+                onChange={handleChange}
               />
             </div>
             <div className="login__field">
@@ -21,9 +81,15 @@ const Login = () => {
                 type="password"
                 className="login__input"
                 placeholder="Password"
+                name="password"
+                value={login.password}
+                onChange={handleChange}
               />
             </div>
-            <button className="button login__submit">
+            <div className={hidden+" form-group"}>
+            <h6 style={{color: "red"}}>Invalid Credentials</h6>
+            </div>
+            <button className="button login__submit" onClick={handleClick}>
               <span className="button__text">Log In Now</span>
               <i className="button__icon fas fa-chevron-right"></i>
             </button>

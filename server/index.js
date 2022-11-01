@@ -1,5 +1,6 @@
 const connectToMongo = require('./database');
 const express = require('express');
+var cors = require('cors');
 
 connectToMongo();
 
@@ -17,6 +18,8 @@ generateQR();
 
 const app = express();
 const port = 9000;
+
+app.use(cors());
 
 // We use this middle ware to read request body params
 app.use(express.json());

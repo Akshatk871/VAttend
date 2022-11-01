@@ -25,8 +25,6 @@ router.route('/:id')
     try{
         let success = false;
 
-        console.log(req.user);
-
         const { location } = req.body;
 
         let record = await Record.create( {

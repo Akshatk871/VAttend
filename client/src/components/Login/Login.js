@@ -30,7 +30,6 @@ const Login = () => {
       body: JSON.stringify({ employee_id: employee_id, password: password })
     });
     const json = await response.json();
-    console.log(json.authtoken);
     
     if(json.success){
         // Save auth-token

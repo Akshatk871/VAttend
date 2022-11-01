@@ -21,9 +21,11 @@ async function generateQR() {
 
   const uri = "http://192.168.29.73:9000/api/scan/" + securedURI;
   console.log(uri);
-  QRCode.toString(uri, { type: "terminal" }, function (err, url) {
-    console.log(url);
+  const imageQR = QRCode.toDataURL(uri, function (err, url) {
+    return url;
   });
+  const QR = {imageQR, uri};
+  return QR;
 }
 
 function qrt() {

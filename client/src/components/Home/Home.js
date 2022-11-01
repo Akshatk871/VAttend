@@ -1,10 +1,10 @@
 import React from 'react'
-import Profile from '../Profile/Profile'
+import QR from '../QR/QR'
 
 const Home = () => {
   return (
     <>
-    <Profile />
+      <QR />
     </>
   )
 }

@@ -10,11 +10,18 @@ connectToMongo();
 // const qr = require('./qrtest');
 // qr();
 
-const generateQR = require('./modules/generateQR');
-generateQR();
+//const generateQR = require('./modules/generateQR');
+//generateQR();
 
 
 // setting up express server
+
+setInterval(()=>{
+    let  currentdate = new Date();
+
+    let seconds = currentdate.getSeconds();
+    console.log(seconds);
+}, 1000);
 
 const app = express();
 const port = 9000;
@@ -29,6 +36,7 @@ app.use('/api/auth', require('./routes/auth'));
 app.use('/api/scan', require('./routes/scan'));
 app.use('/api/records', require('./routes/records'));
 app.use('/api/users', require('./routes/users'));
+app.use('/api/qr', require('./routes/qr'));
 
 app.listen(port, ()=>{
     console.log("Server started at port: "+port);

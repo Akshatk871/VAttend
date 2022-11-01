@@ -8,10 +8,13 @@ const jwt = require('jsonwebtoken');
 const fetchuser = require("../middleware/fetchuser");
 const dateM = require('../modules/datetime');
 const Record = require('../models/Record');
+const distance = require('../modules/distance')
 
 
 const JWT_SECRET = process.env.JWT_SECRET;
 const ADDRESS_SECRET = process.env.ADDRESS_SECRET;
+
+const office_location = [20.250041990505274, 85.80019851562446];
 
 router.route('/:id')
 .get(fetchuser, async (req, res)=>{
@@ -26,14 +29,22 @@ router.route('/:id')
         let success = false;
 
         const { location } = req.body;
+        
+        const dist = distance(office_location[0], office_location[1], location[0], location[1]);
+        
+        let present = false;
+
+        if(dist<2) present = true; 
 
         let record = await Record.create( {
             user: req.user.id,
-            location: location
+            location: location,
+            present: present
         })
 
         success = true;
-        res.json({success});
+        if(present) res.json({success, message: "Marked Present! with distance "+dist});
+        else res.json({success, message: "Marked Absent! with distance "+dist});
 
     }catch(error){
         console.log(error);

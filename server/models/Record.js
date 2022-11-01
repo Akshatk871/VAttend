@@ -7,7 +7,8 @@ const recordSchema = new mongoose.Schema({
         ref: 'user'
     },
     date: {type: Date, default: Date.now},
-    location: { type: [Number], index: { type: '2dsphere', sparse: true}}
+    location: { type: [Number], index: { type: '2dsphere', sparse: true}},
+    present: {type: Boolean}
 });
 
 module.exports = mongoose.model('record', recordSchema);

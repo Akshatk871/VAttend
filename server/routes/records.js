@@ -10,7 +10,10 @@ const fetchuser = require("../middleware/fetchuser");
 
 const JWT_SECRET = process.env.JWT_SECRET;
 
-
+router.route("/")
+.post((req, res)=>{
+    
+})
 
 
 

@@ -8,6 +8,7 @@ const recordSchema = new mongoose.Schema({
     },
     date: {type: Date, default: Date.now},
     location: { type: [Number], index: { type: '2dsphere', sparse: true}},
+    distance: {type: Number},
     present: {type: Boolean}
 });
 

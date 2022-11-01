@@ -18,7 +18,7 @@ const office_location = [process.env.OFFICE_LATITUDE, process.env.OFFICE_LONGITU
 const minimum_distance = [process.env.MINIMUM_DISTANCE]
 
 router.route('/:id')
-.get(fetchuser, async (req, res)=>{
+.post(fetchuser, async (req, res)=>{
     const uri = req.params.id.replaceAll("slash", "/");
     const uriO = md5(dateM()+ADDRESS_SECRET);
     const passwordCompare =  uri == uriO;
@@ -40,6 +40,7 @@ router.route('/:id')
         let record = await Record.create( {
             user: req.user.id,
             location: location,
+            distance: dist,
             present: present
         })
 
@@ -51,6 +52,9 @@ router.route('/:id')
         console.log(error);
         res.json({success: false, error: "Somthing went wrong!"})
     }
+})
+.get((req, res)=>{
+    res.redirect('/');
 })
 
 

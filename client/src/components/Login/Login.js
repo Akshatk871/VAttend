@@ -20,8 +20,7 @@ const Login = () => {
 
   const handleClick = async (event) => {
     event.preventDefault();
-    console.log(employee_id+"       "+ password);
-
+    
     const response = await fetch(`${host}/api/auth/login`, {
       method: "POST",
       headers: {

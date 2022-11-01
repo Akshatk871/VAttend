@@ -1,8 +1,15 @@
-import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect, useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import URLContext from "../../context/url/urlContext";
 import "./QR.css";
 
 const QR = () => {
+
+  let navigate = useNavigate();
+
+  // Setting up the context
+  const context = useContext(URLContext);
+  const {updateURL} = context;
   
   // Calculating time
   let seconds = new Date().getSeconds() * 1000;
@@ -15,7 +22,6 @@ const QR = () => {
   const { imageURL, url } = QR;
 
   const getQR = async () => {
-    console.log("here3")
     const response = await fetch(`${host}/api/QR`, {
       method: "GET",
       headers: {
@@ -28,6 +34,12 @@ const QR = () => {
       updateQR({ imageURL: json.imgurl, url: json.uriShort });
     }
   };
+  
+  const handleClick = (event) =>{
+    event.preventDefault();
+    updateURL(url);
+    navigate('/scanned');
+  }
 
   useEffect(() => {
     getQR();
@@ -44,13 +56,12 @@ const QR = () => {
       <h4>Scan Code To Mark Attendence</h4>
       <img className="qr-code" src={imageURL} alt="QRCode"/>
       <h4>OR</h4>
-      <Link to={url}>
       <button
         className="btn btn-outline-light max-2 attendence-btn"
+        onClick={handleClick}
       >
         Mark Attendence!
       </button>
-      </Link>
     </div>
   );
 };

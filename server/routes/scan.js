@@ -9,10 +9,9 @@ const dateM = require('../modules/datetime');
 const Record = require('../models/Record');
 const User = require('../models/User');
 const distance = require('../modules/distance');
-const { now } = require('mongoose');
 
 
-const JWT_SECRET = process.env.JWT_SECRET;
+const ADD_REACT = process.env.ADD_REACT;
 const ADDRESS_SECRET = process.env.ADDRESS_SECRET;
 
 const office_location = [process.env.OFFICE_LATITUDE, process.env.OFFICE_LONGITUDE];
@@ -59,7 +58,7 @@ router.route('/:id')
     }
 })
 .get((req, res)=>{
-    res.redirect('http://192.168.43.233:3000/scanned/');
+    res.redirect(ADD_REACT+'/scanned/');
 })
 
 

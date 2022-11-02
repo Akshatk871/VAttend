@@ -10,6 +10,7 @@ const md5 = require('md5');
 const dateM = require('../modules/datetime');
 
 const ADDRESS_SECRET = process.env.ADDRESS_SECRET;
+const ADD_SERVER = process.env.ADD_SERVER;
 
 var datetime;
 
@@ -24,7 +25,7 @@ router.route("/")
         var sURI = md5(datetime+ADDRESS_SECRET);
         const securedURI = sURI.replaceAll("/", "slash");
       
-        const uri = "http://192.168.43.233:9000/api/scan/" + securedURI;
+        const uri = ADD_SERVER+"/api/scan/" + securedURI;
         QRCode.toDataURL(uri, function (err, imgurl) {
           res.json({success: true, imgurl, uri});
         });

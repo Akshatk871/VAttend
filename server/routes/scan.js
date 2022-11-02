@@ -54,7 +54,7 @@ router.route('/:id')
     }
 })
 .get((req, res)=>{
-    res.redirect('/');
+    res.redirect('http://192.168.43.233:3000/scanned/');
 })
 
 

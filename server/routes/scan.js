@@ -8,7 +8,8 @@ const fetchuser = require("../middleware/fetchuser");
 const dateM = require('../modules/datetime');
 const Record = require('../models/Record');
 const User = require('../models/User');
-const distance = require('../modules/distance')
+const distance = require('../modules/distance');
+const { now } = require('mongoose');
 
 
 const JWT_SECRET = process.env.JWT_SECRET;
@@ -44,12 +45,13 @@ router.route('/:id')
             present: present
         })
 
-
         const users = await User.findById(req.user.id,'employee_id name');
-
+        const event = new Date();
+        const nowTime = event.toTimeString().split(" ")[0];
         success = true;
-        if(present) res.json({success, present: true, disttance: dist, name: users.name, employee_id: users.employee_id});
-        else res.json({success, present: false, disttance: dist, name: users.name, employee_id: users.employee_id});
+
+        if(present) res.json({success, present: true, distance: dist, name: users.name, employee_id: users.employee_id, time: nowTime});
+        else res.json({success, present: false, distance: dist, name: users.name, employee_id: users.employee_id, time: nowTime});
 
     }catch(error){
         console.log(error);

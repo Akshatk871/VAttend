@@ -24,7 +24,7 @@ router.route("/")
         var sURI = md5(datetime+ADDRESS_SECRET);
         const securedURI = sURI.replaceAll("/", "slash");
       
-        const uri = "http://192.168.29.73:9000/api/scan/" + securedURI;
+        const uri = "http://192.168.43.233:9000/api/scan/" + securedURI;
         QRCode.toDataURL(uri, function (err, imgurl) {
           res.json({success: true, imgurl, uri});
         });

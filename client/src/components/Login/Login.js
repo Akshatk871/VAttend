@@ -5,7 +5,7 @@ import AlertContext from "../../context/alerts/alertContext";
 
 const Login = () => {
 
-  const host = "http://192.168.29.73:9000";
+  const host = "http://192.168.43.233:9000";
   let navigate = useNavigate();
 
   // Context for alert

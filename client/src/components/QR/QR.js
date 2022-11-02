@@ -16,7 +16,7 @@ const QR = () => {
   let waitingTime = seconds<=30000?30000-seconds:60000-seconds;
   let refreshTime = 30000;
 
-  const host = "http://192.168.29.73:9000";
+  const host = "http://192.168.43.233:9000";
   const [QR, updateQR] = useState({ imageURL: "", url: "" });
 
   const { imageURL, url } = QR;

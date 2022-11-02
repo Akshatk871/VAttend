@@ -3,13 +3,8 @@ require('dotenv').config();
 
 const expess = require('express');
 const router = expess.Router();
-const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
 const fetchuser = require("../middleware/fetchuser");
 const Record = require('../models/Record');
-
-
-const JWT_SECRET = process.env.JWT_SECRET;
 
 router.route("/fetchallrecords")
 .get(fetchuser, async (req, res)=>{
@@ -23,9 +18,6 @@ router.route("/fetchallrecords")
       }
     
 })
-
-
-
 
 
 module.exports = router;

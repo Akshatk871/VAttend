@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap');
+body{
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    background-color: rgb(56, 54, 54);
+}
+.card{
+ margin: auto;
+ background-color: rgba(red, green, blue, 0.5);
+}
+.card-img-top{
+    margin: 10px auto;
+    width: 50%;
+
+}
+.status{
+    background-color: rgba(71, 255, 71, 0.5);
+    font-weight: bold;
+    padding:10px 0 0 0;
+}
+hr{
+    margin: 0%;
+}

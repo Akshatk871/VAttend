@@ -27,6 +27,7 @@ const QR = () => {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
+        "Bypass-Tunnel-Reminder": "anything"
       },
     });
 

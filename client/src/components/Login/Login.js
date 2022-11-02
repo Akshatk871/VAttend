@@ -25,6 +25,7 @@ const Login = () => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        "Bypass-Tunnel-Reminder": "anything"
       },
       body: JSON.stringify({ employee_id: employee_id, password: password })
     });

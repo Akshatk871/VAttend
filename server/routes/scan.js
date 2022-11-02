@@ -4,10 +4,10 @@ require('dotenv').config();
 const expess = require('express');
 const router = expess.Router();
 const md5 = require('md5');
-const jwt = require('jsonwebtoken');
 const fetchuser = require("../middleware/fetchuser");
 const dateM = require('../modules/datetime');
 const Record = require('../models/Record');
+const User = require('../models/User');
 const distance = require('../modules/distance')
 
 
@@ -44,9 +44,12 @@ router.route('/:id')
             present: present
         })
 
+
+        const users = await User.findById(req.user.id,'employee_id name');
+
         success = true;
-        if(present) res.json({success, message: "Marked Present! with distance "+dist});
-        else res.json({success, message: "Marked Absent! with distance "+dist});
+        if(present) res.json({success, present: true, disttance: dist, name: users.name, employee_id: users.employee_id});
+        else res.json({success, present: false, disttance: dist, name: users.name, employee_id: users.employee_id});
 
     }catch(error){
         console.log(error);

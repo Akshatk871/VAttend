@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom';
 import URLContext from '../../context/url/urlContext';
+import AttendanceStatus from '../AttendanceStatus/AttendanceStatus';
 
 const Scanned = () => {
     // Setting up the context
@@ -9,12 +10,12 @@ const Scanned = () => {
 
     // Setting up the host
     var host = url;
-    console.log(url);
 
     let navigate = useNavigate();
 
     // Setting up useState to update info being sent to the user
     const [message, updateMessage] = useState("Waiting...");
+    const [Attendance, updateAttendance] = useState({present: "", distance: "", name: "", employee_id: "", time: ""});
 
     useEffect(() => {
         if(!localStorage.getItem('token')) {
@@ -46,7 +47,8 @@ const Scanned = () => {
             const json = await response.json();
 
             if(json.success){
-                updateMessage(json.message)
+                updateMessage("");
+                updateAttendance({present: json.present?"Present":"Absent", distance: json.distance.toFixed(2), name: json.name, employee_id: json.employee_id, time: json.time})
             }else{
                 updateMessage(json.error)
             }
@@ -59,7 +61,8 @@ const Scanned = () => {
 
   return (
     <div>
-        <h2>{message}</h2>
+      <div className={(message==="")&&"d-none"}><h3>{message}</h3></div>
+      <div className={(message!=="")&&"d-none"}><AttendanceStatus Attendance={Attendance}/></div>
     </div>
   )
 }

@@ -5,7 +5,7 @@ const Profile = () => {
   return (
     <div>
         <div className="inner-left">
-            <img className="profile-picture" src="./images/profile.webp" alt=""/>
+          Profile
         </div>
     </div>
   );

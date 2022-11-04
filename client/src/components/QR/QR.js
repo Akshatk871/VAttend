@@ -16,7 +16,8 @@ const QR = () => {
   let waitingTime = seconds<=30000?30000-seconds:60000-seconds;
   let refreshTime = 30000;
 
-  const host = "http://192.168.43.233:9000";
+  const host = process.env.REACT_APP_ADD_SERVER;
+
   const [QR, updateQR] = useState({ imageURL: "", url: "" });
 
   const { imageURL, url } = QR;
@@ -26,6 +27,7 @@ const QR = () => {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
+        "Bypass-Tunnel-Reminder": "anything"
       },
     });
 
@@ -53,14 +55,14 @@ const QR = () => {
 
   return (
     <div className="qr-container">
-      <h4>Scan Code To Mark Attendence</h4>
+      <h4>Scan Code To Mark Attendance</h4>
       <img className="qr-code" src={imageURL} alt="QRCode"/>
       <h4>OR</h4>
       <button
         className="btn btn-outline-light max-2 attendence-btn"
         onClick={handleClick}
       >
-        Mark Attendence!
+        Mark Attendance!
       </button>
     </div>
   );

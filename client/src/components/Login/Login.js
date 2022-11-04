@@ -5,7 +5,7 @@ import AlertContext from "../../context/alerts/alertContext";
 
 const Login = () => {
 
-  const host = "http://192.168.43.233:9000";
+  const host = process.env.REACT_APP_ADD_SERVER;
   let navigate = useNavigate();
 
   // Context for alert
@@ -25,6 +25,7 @@ const Login = () => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        "Bypass-Tunnel-Reminder": "anything"
       },
       body: JSON.stringify({ employee_id: employee_id, password: password })
     });

@@ -34,6 +34,10 @@ const Login = () => {
     if(json.success){
         // Save auth-token
         localStorage.setItem('token', json.authtoken);
+        // Save device-token
+        if(!localStorage.getItem('devicetoken')){
+          localStorage.setItem('devicetoken', json.devicetoken);
+        }
         navigate("/");
         updateAlert("Logged In Successfully!!", "success");
     }

@@ -17,6 +17,8 @@ const AttendanceStatus = (props) => {
             <br />
             <strong>Time:</strong> {props.Attendance.time}
             <br />
+            <strong>Date:</strong> {props.Attendance.date}
+            <br />
             <strong>Distance:</strong> {props.Attendance.distance} KM
           </p>
         </div>

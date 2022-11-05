@@ -51,9 +51,12 @@ const QR = () => {
     comInterval = setInterval(getQR, refreshTime); //This will refresh the data at regularIntervals of refreshTime
     }, waitingTime);
     return () => clearInterval(comInterval); //Clear interval on component unmount to avoid memory leak
+     // eslint-disable-next-line
   }, [refreshTime, waitingTime])
+  
 
   return (
+    <div className="container">
     <div className="qr-container">
       <h4>Scan Code To Mark Attendance</h4>
       <img className="qr-code" src={imageURL} alt="QRCode"/>
@@ -64,6 +67,7 @@ const QR = () => {
       >
         Mark Attendance!
       </button>
+    </div>
     </div>
   );
 };

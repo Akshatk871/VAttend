@@ -13,3 +13,9 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+@media (max-aspect-ratio: 8/10) {
+  .container {
+    margin-top: -5rem;
+  }
+}

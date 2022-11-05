@@ -16,7 +16,7 @@ const AlertState = (props) => {
       setAlert("");
       setType("primary");
       setVisible("d-none")
-    }, 1300);
+    }, 5000);
   };
 
   return (

@@ -15,12 +15,13 @@ const Scanned = () => {
 
     // Setting up useState to update info being sent to the user
     const [message, updateMessage] = useState("Waiting...");
-    const [Attendance, updateAttendance] = useState({present: "", distance: "", name: "", employee_id: "", time: ""});
-
+    const [Attendance, updateAttendance] = useState({present: "", distance: "", name: "", employee_id: "", time: "", date: ""});
     useEffect(() => {
         if(!localStorage.getItem('token')) {
           navigate('/login');
-        }else scan();
+        }else {
+          scan();
+        }
         // eslint-disable-next-line
       }, []);
     
@@ -39,7 +40,8 @@ const Scanned = () => {
                 method: "POST",
                 headers: {
                   "Content-Type": "application/json",
-                  "auth-token": localStorage.getItem('token')
+                  "auth-token": localStorage.getItem('token'),
+                  "device-token": localStorage.getItem('devicetoken')
                 },
                 body: JSON.stringify({ location: location })
               });
@@ -48,7 +50,7 @@ const Scanned = () => {
 
             if(json.success){
                 updateMessage("");
-                updateAttendance({present: json.present?"Present":"Absent", distance: json.distance.toFixed(2), name: json.name, employee_id: json.employee_id, time: json.time})
+                updateAttendance({present: json.present?"Present":"Absent", distance: json.distance.toFixed(2), name: json.name, employee_id: json.employee_id, time: json.time, date: json.date})
             }else{
                 updateMessage(json.error)
             }
@@ -60,9 +62,8 @@ const Scanned = () => {
     }
 
   return (
-    <div>
-      <div className={(message==="")&&"d-none"}><h3>{message}</h3></div>
-      <div className={(message!=="")&&"d-none"}><AttendanceStatus Attendance={Attendance}/></div>
+    <div className='container'>
+      <div>{(message==="")?<AttendanceStatus Attendance={Attendance}/>:<h3>{message}</h3>}</div>
     </div>
   )
 }

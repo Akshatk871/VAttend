@@ -1,0 +1,101 @@
+@import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Montserrat:wght@300;400;700;900&family=Oswald:wght@200;300;400;500;600;700&family=Roboto+Condensed:wght@300&display=swap");
+/* This below is for users section */
+
+.user-row{
+  background-color: rgba(240, 248, 255, 0.5);
+}
+
+.user-row .name{
+  cursor: pointer;
+}
+
+.user-section {
+  text-align: center;
+  color: black;
+}
+
+.table {
+  margin: 1rem auto;
+  max-width: 80%;
+  overflow: auto;
+  text-align: left;
+  font-family: "Oswald";
+  border-radius: 10px;
+  font-weight: 900;
+}
+
+td h6{
+  font-family: "Oswald";
+  font-weight: 300;
+}
+.user {
+  max-width: 80%;
+  text-align: center;
+  margin: 2rem auto;
+}
+
+.users {
+  max-height: 24rem;
+  overflow-y: scroll;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.users::-webkit-scrollbar {
+  display: none;
+}
+
+.user .detail {
+  max-width: 30%;
+  display: inline-block;
+  margin: 1rem 3rem;
+}
+
+.info h5 {
+  font-weight: 300;
+}
+
+.data {
+  visibility: hidden;
+  position: absolute;
+}
+
+.header .user h3 {
+  font-family: "Montserrat";
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.header .detail {
+  width: 12%;
+}
+
+.fa-trash {
+  color: rgb(220, 43, 43);
+}
+
+.fa-trash:hover {
+  color: rgb(255, 44, 44);
+}
+
+.detail.info {
+  font-family: "Montserrat";
+  color: white;
+  font-weight: 300;
+}
+
+@media (max-aspect-ratio: 9/10) {
+  .user {
+    padding: 1rem 0;
+  }
+
+  .data {
+    visibility: visible;
+    position: relative;
+  }
+
+  .user .detail {
+    display: block;
+    max-width: 100%;
+  }
+}

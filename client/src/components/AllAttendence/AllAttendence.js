@@ -2,7 +2,9 @@ import React from 'react'
 
 const AllAttendence = () => {
   return (
-    <div>AllAttendence</div>
+    <div className='container'>
+      AllAttendence
+    </div>
   )
 }
 

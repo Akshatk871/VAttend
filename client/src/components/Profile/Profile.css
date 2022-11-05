@@ -1,9 +1,70 @@
+@import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Montserrat:wght@300;400;700;900&family=Oswald:wght@200;300;400;500;600;700&family=Roboto+Condensed:wght@300&display=swap");
 
-.inner-left{
+.account-section {
+    text-align: center;
+    margin: 1rem;
+  }
+
+  .account {
+    margin: 3rem auto;
+    background-color: rgba(202, 202, 202, 0.4);
+    max-width: 80%;
+    overflow: auto;
     text-align: left;
-}
+    font-family: "Oswald";
+    padding: 1rem;
+    border-radius: 10px;
+  }
+
+  .account-left {
+    float: left;
+    height: 15rem;
+  }
+  
+  .account .profile-pic {
+    width: 6rem;
+    margin: 1rem;
+  }
+  
+  .account-right {
+    margin: 1rem auto;
+  }
+  
+  .account h5 {
+    font-weight: 700;
+    color: rgb(0, 102, 255);
+  }
+  
+  .info {
+    font-weight: 300;
+    font-family: "Fira Code", monospace;
+    color: black;
+  }
+
+  .center{
+    text-align: center;
+  }
+  
+  .center .btn{
+    margin: auto;
+  }
+
+  @media (max-aspect-ratio: 9/10) {
+    .account-left {
+        float: none;
+        height: 7rem;
+        text-align: center;
+      }
+    
+      .account h5{
+        font-size: 0.8rem;
+      }
+      .account .info{
+        font-size: 0.8rem;
+      }
+      .account-right {
+        margin: 1rem 2rem;
+      }
 
 
-.profile-picture{
-    width: 4rem;
-}
+  }

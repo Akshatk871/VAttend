@@ -1,0 +1,88 @@
+/* This below is for records section */
+.record-section {
+    text-align: center;
+    color: black;
+  }
+  
+  .table{
+    margin: 1rem auto;
+    max-width: 80%;
+    overflow: auto;
+    text-align: left;
+    font-family: "Oswald";
+    border-radius: 10px;
+  }
+  .record {
+    max-width: 80%;
+    text-align: center;
+    margin: 0.1rem auto;
+  }
+  
+  .records {
+    max-height: 24rem;
+    overflow-y: scroll;
+  }
+  
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .records::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .record .detail {
+    max-width: 30%;
+    display: inline-block;
+    margin: 1rem 3rem;
+  }
+  
+  .info h5 {
+    font-weight: 300;
+  }
+  
+  .data {
+    visibility: hidden;
+    position: absolute;
+  }
+  
+  .header .record h3 {
+    font-family: "Montserrat";
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-align: center;
+  }
+  
+  .header .detail {
+    width: 12%;
+  }
+  
+  .present {
+    background-color: rgb(34, 215, 34);
+  }
+  
+  .absent {
+    background-color: rgb(200, 55, 55);
+  }
+  
+  .detail.info {
+    font-family: "Montserrat";
+    color: white;
+    font-weight: 300;
+  }
+
+
+  @media (max-aspect-ratio: 9/10) {
+    .record {
+        padding: 1rem 0;
+      }
+    
+
+      .data {
+        visibility: visible;
+        position: relative;
+      }
+    
+      .record .detail {
+        display: block;
+        max-width: 100%;
+      }
+
+  }

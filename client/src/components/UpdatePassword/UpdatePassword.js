@@ -24,7 +24,7 @@ const UpdatePassword = () => {
       headers: {
         "Content-Type": "application/json",
         "Bypass-Tunnel-Reminder": "anything",
-        "auth-token": localStorage.getItem('token')
+        "auth-token": localStorage.getItem('vattend-token')
       },
       body: JSON.stringify({ oldpassword: currentpassword, newpassword: newpassword })
     });

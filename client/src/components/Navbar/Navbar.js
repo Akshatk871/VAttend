@@ -39,7 +39,7 @@ const Navbar = () => {
                 className={` nav-link ${
                   location.pathname === "/profile" && "active"
                 }`}
-                to={localStorage.getItem("token")?"/profile":"/login"}
+                to={localStorage.getItem('vattend-token')?"/profile":"/login"}
               >
                 Profile
               </Link>
@@ -68,7 +68,7 @@ const Navbar = () => {
               </Link>
             </li>
           </ul>
-          {!localStorage.getItem("token") ? (
+          {!localStorage.getItem('vattend-token') ? (
             <div className="d-flex">
               <Link
                 className="btn btn-outline-light mx-1"
@@ -82,7 +82,7 @@ const Navbar = () => {
             <button
               className="btn btn-outline-light max-2"
               onClick={() => {
-                localStorage.removeItem("token");
+                localStorage.removeItem('vattend-token');
                 navigate("/login");
               }}
             >

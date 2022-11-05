@@ -33,10 +33,10 @@ const Login = () => {
     
     if(json.success){
         // Save auth-token
-        localStorage.setItem('token', json.authtoken);
+        localStorage.setItem('vattend-token', json.authtoken);
         // Save device-token
-        if(!localStorage.getItem('devicetoken')){
-          localStorage.setItem('devicetoken', json.devicetoken);
+        if(!localStorage.getItem('vadevicetoken')){
+          localStorage.setItem('vadevicetoken', json.devicetoken);
         }
         navigate("/");
         updateAlert("Logged In Successfully!!", "success");

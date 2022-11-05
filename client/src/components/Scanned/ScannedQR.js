@@ -11,7 +11,7 @@ const ScannedQR = () => {
   let navigate = useNavigate();
 
   useEffect(() => {
-    if (!localStorage.getItem("token")) {
+    if (!localStorage.getItem('vattend-token')) {
       navigate("/login");
     } else {
       const hostt = process.env.REACT_APP_ADD_SERVER;

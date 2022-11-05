@@ -17,7 +17,7 @@ const Scanned = () => {
     const [message, updateMessage] = useState("Waiting...");
     const [Attendance, updateAttendance] = useState({present: "", distance: "", name: "", employee_id: "", time: "", date: ""});
     useEffect(() => {
-        if(!localStorage.getItem('token')) {
+        if(!localStorage.getItem('vattend-token')) {
           navigate('/login');
         }else {
           scan();
@@ -40,8 +40,8 @@ const Scanned = () => {
                 method: "POST",
                 headers: {
                   "Content-Type": "application/json",
-                  "auth-token": localStorage.getItem('token'),
-                  "device-token": localStorage.getItem('devicetoken')
+                  "auth-token": localStorage.getItem('vattend-token'),
+                  "device-token": localStorage.getItem('vadevicetoken')
                 },
                 body: JSON.stringify({ location: location })
               });

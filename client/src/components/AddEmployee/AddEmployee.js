@@ -24,7 +24,7 @@ const AddEmployee = () => {
       headers: {
         "Content-Type": "application/json",
         "Bypass-Tunnel-Reminder": "anything",
-        "auth-token": localStorage.getItem('token')
+        "auth-token": localStorage.getItem('vattend-token')
       },
       body: JSON.stringify({ name: name, employee_id: employee_id, password: password, admin: (admin === "Yes")?true:false })
     });

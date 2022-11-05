@@ -43,3 +43,10 @@ Server Repo - https://github.com/whysosaket/VAttend-Server <br>
     <h6>Dashboard Page On PC</h6>
     <img src="/screenshots/pc3.png" width="600px"</img> 
 </div>
+
+# Screenshots Mobile
+<div align="center" style="text-align: center">
+    <img src="/screenshots/mb1.jpg" height="400px"</img> 
+    <img src="/screenshots/mb2.jpg" height="400px"</img> 
+    <img src="/screenshots/mb3.jpg" height="400px"</img> 
+</div>

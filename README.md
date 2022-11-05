@@ -27,3 +27,19 @@ Server Repo - https://github.com/whysosaket/VAttend-Server <br>
 3. Make an All Attendance page that shows all attendance made to an admin user.
 4. Make a better dashboard such that he can even retrieve all present users.
 
+# Screenshots
+
+<div align="center" style="text-align: center">
+    <h6>Home Page (QR) On PC</h6>
+    <img src="/screenshots/pc1.png" width="600px"</img> 
+</div>
+
+<div align="center" style="text-align: center">
+    <h6>Profile Page On PC</h6>
+    <img src="/screenshots/pc2.png" width="600px"</img> 
+</div>
+
+<div align="center" style="text-align: center">
+    <h6>Dashboard Page On PC</h6>
+    <img src="/screenshots/pc3.png" width="600px"</img> 
+</div>

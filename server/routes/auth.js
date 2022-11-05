@@ -8,6 +8,7 @@ const { body, validationResult} = require('express-validator');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const fetchuser = require('../middleware/fetchuser');
+const md5 = require('md5');
 
 const JWT_SECRET = process.env.JWT_SECRET;
 
@@ -26,14 +27,23 @@ const JWT_SECRET = process.env.JWT_SECRET;
 router.route('/createuser')
 .post([
     body('name', 'Enter a valid name').isLength({min: 3}),
-    body('password').isLength({min: 6})
-], async (req, res)=>{
+    body('password').isLength({min: 6}),
+    body('employee_id').isLength({min: 4})
+],fetchuser, async (req, res)=>{
+    let success = false;
 
+    // Checking if requester is a admin/authoised or not
+    const requester = await User.findById(req.user.id, 'admin name')
+    if(!requester.admin) {
+        return res.status(400).json({success, error: "No Access!!!"});
+    }
+
+    
     // Validating if email/password/name is acceptable
     const errors = validationResult(req);
 
     if(!errors.isEmpty()){
-        return res.status(400).json({errors: errors.array()});
+        return res.status(400).json({success, errors: errors.array()});
     }
 
     // Saving req data into a variable
@@ -43,7 +53,7 @@ router.route('/createuser')
     // Checking if user already exists
     let user = await User.findOne({employee_id: data.employee_id});
     if(user){
-        res.status(400).json({error: 'Sorry, a user with this employee id already exists!'});
+        res.status(400).json({success, error: 'Sorry, a user with this employee id already exists!'});
         return null;
     }
 
@@ -56,7 +66,8 @@ router.route('/createuser')
     user = await User.create({
         name: data.name,
         password: securedPassword,
-        employee_id: data.employee_id
+        employee_id: data.employee_id,
+        admin: data.admin
     })
 
     const returnData = {
@@ -64,10 +75,8 @@ router.route('/createuser')
             id: user.id
         }
     }
-
-    const autotoken = jwt.sign(returnData, JWT_SECRET);
-
-    res.json({msg: 'Account Created Successfully!!', autotoken});
+    success = true;
+    res.json({success, info: 'Account Created Successfully!!'});
     } catch(error){
         console.log(error);
         res.json({error: 'Something Went Wrong!'});
@@ -123,8 +132,9 @@ router.route('/login')
         }
 
         const authtoken = jwt.sign(payload, JWT_SECRET);
+        const devicetoken = md5(user.employee_id)+Math.random();
         success = true;
-        res.json({success, authtoken});
+        res.json({success, authtoken, devicetoken});
 
     }catch(error){
         console.log(error);

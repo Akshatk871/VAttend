@@ -1,13 +1,16 @@
 {
-  "name": "vattend-server",
+  "name": "vattendserver",
   "version": "1.0.0",
   "description": "server side for vattend application",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "start": "node index.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Saket Aryan",
   "license": "ISC",
+  "engines": {
+    "node": "16.17.1"
+  },
   "dependencies": {
     "bcrypt": "^5.1.0",
     "cors": "^2.8.5",

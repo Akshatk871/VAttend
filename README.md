@@ -1,2 +1,29 @@
 # VAttend
- A attendence management system based on user location
+
+VirtualAttend (VAttend) is an idea planned through which attendance can be marked virtually. It is a MERN-based Single Page Web Application currently hosted on Heroku.
+
+# Project Link - 
+https://vattend-client.herokuapp.com/
+
+# GitHub Repositories -
+Project in One Repo - https://github.com/whysosaket/VAttend <br>
+Client Repo - https://github.com/whysosaket/VAttend-Client <br>
+Server Repo - https://github.com/whysosaket/VAttend-Server <br>
+
+# Features (Currently Completed)
+1. Attendance can be marked by going to the website.
+2. This attendance is marked present or absent based on the user's location.
+3. QR code is also available to scan in order to reduce hassle.
+4. This QR code gets updated every 30 seconds along with the attendance marking link.
+5. Currently, each device (Browser) can mark an attendance every 30 Minutes (this time can be varied), also every account can mark attendance every 30 Minutes. <br> This above feature is achieved using TTL indexing in the Database Collection.
+7. Currently, Admin users can add new Employees.
+8. Admin can view any Employee’s profile as well as all users.
+9. Each employee can view their profile with all their recent records.
+10. Log In and Log Out concept is based on local storage auth token.
+
+# Features (To Add)
+1. Add a superuser feature that can reset anyone’s password, and delete users.
+2. Add a feature that an admin user can promote any other user to the admin.
+3. Make an All Attendance page that shows all attendance made to an admin user.
+4. Make a better dashboard such that he can even retrieve all present users.
+

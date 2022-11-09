@@ -1,5 +1,5 @@
 import React from 'react'
-import QR from '../QR/QR'
+import QR from '../../components/QR/QR'
 
 const Home = () => {
   return (

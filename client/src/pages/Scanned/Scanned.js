@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom';
 import URLContext from '../../context/url/urlContext';
-import AttendanceStatus from '../AttendanceStatus/AttendanceStatus';
+import AttendanceStatus from '../../components/AttendanceStatus/AttendanceStatus';
 
 const Scanned = () => {
     // Setting up the context

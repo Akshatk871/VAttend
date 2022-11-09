@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import "./Profile.css";
 import AlertContext from "../../context/alerts/alertContext";
-import Records from "../Records/Records";
+import Records from "../../components/Records/Records";
 import { useNavigate } from "react-router-dom";
 
 const Profile = (props) => {

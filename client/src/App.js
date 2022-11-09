@@ -2,22 +2,26 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Navbar from "./components/Navbar/Navbar";
+import Alert from "./components/Alert/Alert";
 
-import Login from "./components/Login/Login";
-import Home from "./components/Home/Home";
-import About from "./components/About/About";
+// Pages import
+import Login from "./pages/Login/Login";
+import Home from "./pages/Home/Home";
+import About from "./pages/About/About";
+import Profile from "./pages/Profile/Profile";
+import Scanned from "./pages/Scanned/Scanned";
+import Dashboard from "./pages/Dashboard/Dashboard";
+import AddEmployee from "./pages/AddEmployee/AddEmployee";
+import AllAttendence from "./pages/AllAttendence/AllAttendence";
+import ScannedQR from "./pages/Scanned/ScannedQR";
+import UpdatePassword from "./pages/UpdatePassword/UpdatePassword";
+import SpecificUser from "./pages/SpecificUser/SpecificUser";
+
+// State Imports
 import AlertState from "./context/alerts/AlertState";
 import SpecificuserState from "./context/specificuser/SpecificuserState";
 import URLState from "./context/url/URLState";
-import Alert from "./components/Alert/Alert";
-import Profile from "./components/Profile/Profile";
-import Scanned from "./components/Scanned/Scanned";
-import Dashboard from "./components/Dashboard/Dashboard";
-import AddEmployee from "./components/AddEmployee/AddEmployee";
-import AllAttendence from "./components/AllAttendence/AllAttendence";
-import ScannedQR from "./components/Scanned/ScannedQR";
-import UpdatePassword from "./components/UpdatePassword/UpdatePassword";
-import SpecificUser from "./components/SpecificUser/SpecificUser";
+
 
 function App() {
   return (

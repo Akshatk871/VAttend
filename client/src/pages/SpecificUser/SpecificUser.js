@@ -1,6 +1,6 @@
 import React, {useContext} from 'react';
 import SpecificuserContext from '../../context/specificuser/specificuserContext';
-import Profile from "../../components/Profile/Profile";
+import Profile from "../Profile/Profile";
 
 const SpecificUser = () => {
 

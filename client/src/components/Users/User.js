@@ -9,12 +9,17 @@ const User = (props) => {
 
     // This is for Alert Context
     const context= useContext(SpecificuserContext);
-    const { updateUser } = context;
+    const { updateUser, deleteUser } = context;
 
     function handleClick(event){
       event.preventDefault();
       updateUser(_id);
       navigate('/specificprofile');
+    }
+
+    const handleDelete = async ()=>{
+      await deleteUser(_id);
+      props.fetchUsers();
     }
 
   return (
@@ -40,7 +45,9 @@ const User = (props) => {
               </h6>
             </td>
             <td>
+              <span onClick={handleDelete}>
             <i className="fa-solid fa-trash fa-lg"></i>
+            </span>
             </td>
           </tr>
         

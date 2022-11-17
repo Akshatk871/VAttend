@@ -26,8 +26,8 @@ import URLState from "./context/url/URLState";
 function App() {
   return (
     <>
-    <AlertState>
-    <URLState>
+      <AlertState>
+      <URLState>
       <SpecificuserState>
       <Router>
         <Navbar />

@@ -54,7 +54,7 @@ const Users = () => {
             {/* This is the individual users */}
 
             {users.map((user, index) => {
-              return <User user={user} key={index} />;
+              return <User user={user} key={index} fetchUsers={fetchUsers} />;
             })}
 
             {/* This is the EENNNDD individual users */}

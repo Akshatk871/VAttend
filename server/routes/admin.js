@@ -135,4 +135,34 @@ router.route("/fetchuserrecords").post(fetchuser, async (req, res) => {
   });
 
 
+  router.route('/deleteuser')
+  .delete(fetchuser, async (req, res)=>{
+    try {
+
+      // Verification if the request requested is by a admin
+      let success = false;
+      const user = await User.findById(req.user.id);
+
+      // Checking if user exists
+      if(!user) {
+         return res.status(400).json({success, error: "Not Authorized!"});
+      }
+
+      const isAdmin = user.admin;
+
+      // Checking if found user is a Admin
+      if(!isAdmin) {
+          return res.status(400).json({success, error: "Not Authorized!"});
+      }
+
+    // Performing the delete operation
+     await User.findByIdAndDelete(req.body.id);
+
+    res.json({ success: true, info: "Person Deleted!!!" });
+  } catch (error) {
+    console.log(error);
+    res.json({ success: false, error: "Something Went Wrong!" });
+  }
+  })
+
 module.exports = router;

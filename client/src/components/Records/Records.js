@@ -31,7 +31,10 @@ const Records = (props) => {
     
         const json = await response.json();
         if (json.success) {
+          console.log(json)
+          console.log(typeof json.records)
           updateRecords(json.records);
+          console.log(typeof records)
         }else{
           updateAlert(json.error, "danger");
         }

@@ -29,6 +29,7 @@ Server Repo - https://github.com/whysosaket/VAttend-Server <br>
 
 # Screenshots
 
+
 <div align="center" style="text-align: center">
     <h6>Home Page (QR) On PC</h6>
     <img src="/screenshots/pc1.png" width="600px"</img> 

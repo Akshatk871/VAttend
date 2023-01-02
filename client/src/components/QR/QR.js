@@ -39,7 +39,7 @@ const QR = () => {
         updateQR({ imageURL: "/images/404.png", url: "/" });
       }
     } catch (err) {
-      updateQR({ imageURL: "/images/404.png", url: "/error" });
+      updateQR({ imageURL: "/images/404.png", url: "/" });
     }
   };
 
@@ -76,7 +76,7 @@ const QR = () => {
         >
           Mark Attendance!
         </button>)}
-        {url === "/error" && (<h4>Something went wrong!</h4>)}
+        {url === "/" && (<h4>Something went wrong!</h4>)}
       </div>
     </div>
   );

@@ -1,6 +1,6 @@
 # VAttend
 
-VirtualAttend (VAttend) is an idea planned through which attendance can be marked virtually. It is a MERN-based Single Page Web Application currently hosted on Heroku.
+VirtualAttend (VAttend) is an idea planned through which attendance can be marked virtually. It is a MERN-based Single Page Web Application currently hosted on Netlify.
 
 # Project Link - 
 https://vattend.netlify.app/

@@ -76,7 +76,8 @@ const QR = () => {
         >
           Mark Attendance!
         </button>)}
-        {url === "/" && (<h4>Something went wrong!</h4>)}
+        {imageURL === "/images/loading.gif" && (<h4>Loading...</h4>)}
+        {imageURL === "/images/404.png" && (<h4>Something went wrong!</h4>)}
       </div>
     </div>
   );

@@ -34,28 +34,56 @@ const Navbar = () => {
               </Link>
             </li>
 
-            <li className="nav-item">
-              <Link
-                className={` nav-link ${
-                  location.pathname === "/profile" && "active"
-                }`}
-                to={localStorage.getItem('vattend-token')?"/profile":"/login"}
-              >
-                Profile
-              </Link>
-            </li>
-
-            <li className="nav-item dropdown">
-          <Link className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Admin
-          </Link>
-          <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><Link className="dropdown-item" to="/dashboard">Dashboard</Link></li>
-            <li><Link className="dropdown-item" to="/addemployee">Add Employees</Link></li>
-            <li><hr className="dropdown-divider" /></li>
-            <li><Link className="dropdown-item" to="/allattendence">All Attendence</Link></li>
-          </ul>
-        </li>
+            {localStorage.getItem("vattend-token") && (
+              <li className="nav-item">
+                <Link
+                  className={` nav-link ${
+                    location.pathname === "/profile" && "active"
+                  }`}
+                  to={
+                    localStorage.getItem("vattend-token")
+                      ? "/profile"
+                      : "/login"
+                  }
+                >
+                  Profile
+                </Link>
+              </li>
+            )}
+            {localStorage.getItem("vattend-token") && (
+              <li className="nav-item dropdown">
+                <Link
+                  className="nav-link dropdown-toggle"
+                  href="#"
+                  id="navbarDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Admin
+                </Link>
+                <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li>
+                    <Link className="dropdown-item" to="/dashboard">
+                      Dashboard
+                    </Link>
+                  </li>
+                  <li>
+                    <Link className="dropdown-item" to="/addemployee">
+                      Add Employees
+                    </Link>
+                  </li>
+                  <li>
+                    <hr className="dropdown-divider" />
+                  </li>
+                  <li>
+                    <Link className="dropdown-item" to="/allattendence">
+                      All Attendence
+                    </Link>
+                  </li>
+                </ul>
+              </li>
+            )}
 
             <li className="nav-item">
               <Link
@@ -68,7 +96,7 @@ const Navbar = () => {
               </Link>
             </li>
           </ul>
-          {!localStorage.getItem('vattend-token') ? (
+          {!localStorage.getItem("vattend-token") ? (
             <div className="d-flex">
               <Link
                 className="btn btn-outline-light mx-1"
@@ -82,7 +110,7 @@ const Navbar = () => {
             <button
               className="btn btn-outline-light max-2"
               onClick={() => {
-                localStorage.removeItem('vattend-token');
+                localStorage.removeItem("vattend-token");
                 navigate("/login");
               }}
             >

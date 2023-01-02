@@ -1,5 +1,4 @@
-import React, { useState, useContext } from "react";
-import AlertContext from "./specificuserContext.js";
+import React, { useState } from "react";
 import SpecificuserContext from "./specificuserContext.js";
 
 const SpecificuserState = (props) => {

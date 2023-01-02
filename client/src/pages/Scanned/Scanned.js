@@ -30,6 +30,12 @@ const Scanned = () => {
     // This check is if device/browser supports Geo-Location
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(sendRequest);
+        console.log("Scanning...");
+        setTimeout(() => {
+            if(message==="Waiting..."){
+                updateMessage("Sorry! Device/Browser doesn't support Geolocation/Permission denied!");
+            }
+        }, 10000);
         async function sendRequest(position){
             let latitude =  await position.coords.latitude;
             let longitude = await position.coords.longitude;

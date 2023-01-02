@@ -23,7 +23,6 @@ const QR = () => {
 
   const getQR = async () => {
     try {
-      updateQR({ imageURL: "/images/loading.gif", url: "/" });
       const response = await fetch(`${host}/api/QR`, {
         method: "GET",
         headers: {
@@ -51,6 +50,7 @@ const QR = () => {
   };
 
   useEffect(() => {
+    updateQR({ imageURL: "/images/loading.gif", url: "/" });
     getQR();
     let comInterval;
     setTimeout(() => {

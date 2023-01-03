@@ -46,6 +46,11 @@ router.route('/createuser')
         return res.status(400).json({success, errors: errors.array()});
     }
 
+    // checking if employee id is 10 digits long and it contains only digits
+    if(req.body.employee_id.length != 10 || !req.body.employee_id.match(/^[0-9]+$/)){
+        return res.status(400).json({success, error: "Employee ID must be 10 digits long! and it must contain only digits"});
+    }
+
     // Saving req data into a variable
     let data = req.body;
 
@@ -61,6 +66,9 @@ router.route('/createuser')
 
     // Crating a salt from bcrypt
     const securedPassword = await bcrypt.hash(data.password.toString(), 10);
+
+    // Make the name's first letter capital of every word
+    data.name = data.name.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
 
     // Creating the user
     user = await User.create({

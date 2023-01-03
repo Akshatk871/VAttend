@@ -3,7 +3,7 @@
 VirtualAttend (VAttend) is an idea planned through which attendance can be marked virtually. It is a MERN-based Single Page Web Application currently hosted on Netlify.
 
 # Project Link - 
-https://vattenditer.onrender.com/
+https://vattenditer.onrender.com/ <br>
 https://vattend.netlify.app/ (Not Working Properly)
 
 # GitHub Repositories -

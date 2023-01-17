@@ -95,6 +95,16 @@ const Navbar = () => {
                 About
               </Link>
             </li>
+            <li className="nav-item">
+              <Link
+                className={` nav-link ${
+                  location.pathname === "/map" && "active"
+                }`}
+                to="/map"
+              >
+                Map
+              </Link>
+            </li>
           </ul>
           {!localStorage.getItem("vattend-token") ? (
             <div className="d-flex">

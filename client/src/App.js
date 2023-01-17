@@ -21,7 +21,6 @@ import SpecificUser from "./pages/SpecificUser/SpecificUser";
 import AlertState from "./context/alerts/AlertState";
 import SpecificuserState from "./context/specificuser/SpecificuserState";
 import URLState from "./context/url/URLState";
-import Map from "./pages/Map/Map";
 
 
 function App() {
@@ -46,7 +45,6 @@ function App() {
             <Route path="/allattendence" element={<AllAttendence />}></Route>
             <Route path="/updatepassword" element={<UpdatePassword />}></Route>
             <Route path="/specificprofile" element={<SpecificUser />}></Route>
-            <Route path="/map" element={<Map />}></Route>
           </Routes>
         </div>
       </Router>

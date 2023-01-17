@@ -46,7 +46,7 @@
   }
   
   .center .btn{
-    margin: auto;
+    margin: 0.5rem auto;
   }
 
   @media (max-aspect-ratio: 9/10) {

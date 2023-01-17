@@ -3,6 +3,7 @@ import "./Profile.css";
 import AlertContext from "../../context/alerts/alertContext";
 import Records from "../../components/Records/Records";
 import { useNavigate } from "react-router-dom";
+import Leaflet from "../../components/Leaflet/Leaflet";
 
 const Profile = (props) => {
   const navigate = useNavigate();
@@ -24,6 +25,9 @@ const Profile = (props) => {
     admin: "",
   });
   const { name, employee_id, date, time, admin } = account;
+
+  // State for MAP
+  const [map, updateMap] = useState(false);
 
   // This will get triggered if self profile is visited
   const getProfile = async () => {
@@ -63,6 +67,11 @@ const Profile = (props) => {
       updateAlert(json.error, "danger");
     }
   };
+
+  /// FUNCTIONS FOR MAP
+  function showMap(){
+    updateMap(!map);
+  }
 
   useEffect(() => {
     if(props.user === "self") getProfile();
@@ -109,8 +118,25 @@ const Profile = (props) => {
               navigate('/updatepassword')
             }}
           />
+
+          <input
+            className="btn btn-success d-flex"
+            type="button"
+            value="Show Map"
+            onClick={()=>{
+              showMap()
+            }}
+          />
+
         </div>
       </div>
+
+      {map&&(
+        <>
+        <Leaflet />
+        </>
+      )}
+
       <Records user={props.user} route='/api/admin/fetchuserrecords' />
     </div>
   );

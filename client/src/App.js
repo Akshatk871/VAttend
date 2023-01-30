@@ -21,6 +21,7 @@ import SpecificUser from "./pages/SpecificUser/SpecificUser";
 import AlertState from "./context/alerts/AlertState";
 import SpecificuserState from "./context/specificuser/SpecificuserState";
 import URLState from "./context/url/URLState";
+import RecordState from "./context/records/RecordsState";
 
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
       <AlertState>
       <URLState>
       <SpecificuserState>
+      <RecordState>
       <Router>
         <Navbar />
         <Alert />
@@ -48,6 +50,7 @@ function App() {
           </Routes>
         </div>
       </Router>
+      </RecordState>
       </SpecificuserState>
       </URLState>
       </AlertState>

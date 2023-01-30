@@ -4,6 +4,7 @@ import AlertContext from "../../context/alerts/alertContext";
 import Records from "../../components/Records/Records";
 import { useNavigate } from "react-router-dom";
 import Leaflet from "../../components/Leaflet/Leaflet";
+import RecordsContext from "../../context/records/recordsContext";
 
 const Profile = (props) => {
   const navigate = useNavigate();
@@ -16,6 +17,10 @@ const Profile = (props) => {
   // This is for Alert Context
   const contextAlert = useContext(AlertContext);
   const {updateAlert} = contextAlert;
+
+  // context for records maps
+  const mapContext = useContext(RecordsContext);
+  const { locations } = mapContext;
 
   const [account, updateAccount] = useState({
     name: "",
@@ -124,7 +129,7 @@ const Profile = (props) => {
             type="button"
             value="Show Map"
             onClick={()=>{
-              showMap()
+              showMap();
             }}
           />
 
@@ -133,7 +138,7 @@ const Profile = (props) => {
 
       {map&&(
         <>
-        <Leaflet />
+        <Leaflet marks={locations} />
         </>
       )}
 

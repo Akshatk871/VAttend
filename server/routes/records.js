@@ -14,7 +14,7 @@ router.route("/fetchallrecords").get(fetchuser, async (req, res) => {
   try {
     var records = await Record.find(
       { user: req.user.id },
-      "date distance present"
+      "date distance present location"
     );
 
     // Below Function Fixes time error i.e. 5hrs and 30 mins

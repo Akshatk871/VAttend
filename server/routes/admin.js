@@ -120,7 +120,7 @@ router.route("/fetchuserrecords").post(fetchuser, async (req, res) => {
 
       var records = await Record.find(
         { user: req.body.id },
-        "date distance present"
+        "date distance present location"
       );
   
       // Below Function Fixes time error i.e. 5hrs and 30 mins

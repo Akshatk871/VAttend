@@ -1,65 +1,27 @@
 import React, {useState, useContext, useEffect} from "react";
 import Record from "./Record";
 import "./Records.css";
-import AlertContext from "../../context/alerts/alertContext";
+import RecordContext from "../../context/records/recordsContext";
 
 const Records = (props) => {
 
-    const host = process.env.REACT_APP_ADD_SERVER;
-
-    var route = '/api/records/fetchallrecords'
-
-    // This will get triggered if other user profile is visited
-    if(props.user !== "self") route = props.route;
-
-    // This is for Alert Context
-    const contextAlert = useContext(AlertContext);
-    const {updateAlert} = contextAlert;
-
-    const [records, updateRecords] = useState([]);
-
-    // This will get triggered if self profile is visited
-    const fetchRecords = async () => {
-        const response = await fetch(`${host}${route}`, {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            "Bypass-Tunnel-Reminder": "anything",
-            'auth-token': localStorage.getItem('vattend-token')
-          },
-        });
-    
-        const json = await response.json();
-        if (json.success) {
-          updateRecords(json.records);
-        }else{
-          updateAlert(json.error, "danger");
-        }
-      };
-
-      // This will get triggered if other user profile is visited
-      const fetchSpecificRecords = async () => {
-        const response = await fetch(`${host}${route}`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "Bypass-Tunnel-Reminder": "anything",
-            'auth-token': localStorage.getItem('vattend-token')
-          },
-          body: JSON.stringify({ id: props.user })
-        });
-    
-        const json = await response.json();
-        if (json.success) {
-          updateRecords(json.records);
-        }else{
-          updateAlert(json.error, "danger");
-        }
-      };
+    const profileContext = useContext(RecordContext);
+    const {records, fetchRecords, fetchSpecificRecords, locations} = profileContext;
 
       useEffect(() => {
-        if(props.user === "self") fetchRecords();
-        else fetchSpecificRecords();
+        async function fetchRecord() {
+          await fetchRecords();
+        }
+        async function fetchSpecificRecord() {
+          await fetchSpecificRecords(props.route, props.user);
+        }
+        
+        if(props.user === "self") {
+          fetchRecord();
+        }
+        else {
+          fetchSpecificRecord();
+        }
          // eslint-disable-next-line
       }, [])
 
@@ -80,7 +42,7 @@ const Records = (props) => {
           </thead>
 
           {/* This is the individual records */}
-
+        
           {records.slice(0).reverse().map((record, index) => {
           return <Record record={record} key={index} />;
             })}

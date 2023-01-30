@@ -4,7 +4,7 @@ VirtualAttend (VAttend) is an idea planned through which attendance can be marke
 
 # Project Link - 
 https://vattenditer.onrender.com/ <br>
-https://vattend.netlify.app/ (Not Working Properly)
+https://vattend.netlify.app/ (Not Working correctly, Proper hosting will be done in near future) 
 
 # GitHub Repositories -
 Project in One Repo - https://github.com/whysosaket/VAttend <br>

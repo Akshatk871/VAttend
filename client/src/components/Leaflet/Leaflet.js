@@ -1,5 +1,5 @@
 import React from "react";
-import { MapContainer, TileLayer, Marker } from "react-leaflet";
+import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "./Leaflet.css";
 import L from 'leaflet';
 
@@ -36,7 +36,11 @@ const Leaflet = (props) => {
             <>{
             props.marks.map((mark, index) => {
               console.log(typeof mark);
-              return ( <Marker position={[mark[0], mark[1]]} icon={locationIcon}></Marker> );
+              return ( <Marker position={[mark[0], mark[1]]} icon={locationIcon}>
+                <Popup>
+        {mark[0]+", "+mark[1]}<br />
+      </Popup>
+              </Marker> );
             })}
             </>
 

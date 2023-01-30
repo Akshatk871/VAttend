@@ -9,6 +9,7 @@ const RecordState = (props) => {
 
   const [records, updateRecords] = useState([]);
   const [locations, updateLocations] = useState([]);
+  // TODO - CONNECT LOCATIONS and records
 
 
   // This is for Alert Context

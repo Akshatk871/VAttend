@@ -54,6 +54,9 @@ const Records = (props) => {
       };
 
       const limitRecords = (records) => {
+        if (limit === "all") {
+          return records.slice(0).reverse();
+        }
         return records.slice(0).reverse().slice(0, limit);
       };
 
@@ -77,6 +80,8 @@ const Records = (props) => {
           <option value="10">10</option>
           <option value="25">25</option>
           <option value="50">50</option>
+          <option value="100">100</option>
+          <option value="all">All</option>
         </select>
 
         <button className="btn btn-dark btn-sm mx-2" onClick={handleFilterRecords}>Filter</button>

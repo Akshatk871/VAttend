@@ -13,6 +13,7 @@ const Leaflet = (props) => {
     iconAnchor: [15, 15],
   });
 
+  // eslint-disable-next-line
   let absentIcon = L.icon({
     iconUrl:
       "https://png.pngtree.com/png-clipart/20191120/original/pngtree-map-location-marker-icon-in-red-png-image_5004115.jpg",

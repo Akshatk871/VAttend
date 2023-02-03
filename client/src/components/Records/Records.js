@@ -6,7 +6,7 @@ import RecordContext from "../../context/records/recordsContext";
 const Records = (props) => {
 
     const profileContext = useContext(RecordContext);
-    const {records, fetchRecords, fetchSpecificRecords, locations} = profileContext;
+    const {records, fetchRecords, fetchSpecificRecords} = profileContext;
 
     const [recordsFiltered, setRecords] = useState(records);
 
@@ -27,7 +27,7 @@ const Records = (props) => {
           fetchSpecificRecord();
         }
          // eslint-disable-next-line
-      }, [])
+      }, [records])
 
       
 
@@ -104,6 +104,7 @@ const Records = (props) => {
         </table>
 
         <br />
+        <p>**Showing <strong>{recordsFiltered.length}</strong> Records**</p>
       </div>
     </div>
     </>

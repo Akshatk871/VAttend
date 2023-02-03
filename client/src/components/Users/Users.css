@@ -105,4 +105,9 @@ td h6{
     display: block;
     max-width: 100%;
   }
+
+  .modal-body{
+    padding: 0;
+    width: 300%;
+  }
 }

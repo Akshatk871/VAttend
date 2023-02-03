@@ -25,6 +25,7 @@ const Users = () => {
     const json = await response.json();
     if (json.success) {
       updateUsers(json.users);
+      setUsersFiltered(json.users);
     } else {
       updateAlert(json.error, "danger");
     }
@@ -35,10 +36,31 @@ const Users = () => {
     // eslint-disable-next-line
   }, []);
 
+  const [usersFiltered, setUsersFiltered] = useState([]);
+
+  const handleSearchChange = (e) => {
+    searchUser(e.target.value);
+  };
+
+  const searchUser = async (e) => {
+    // search for user based on name or employee id
+    setUsersFiltered(users.filter((user) => user.name.toLowerCase().includes(e.toLowerCase()) || user.employee_id.toLowerCase().includes(e.toLowerCase())));
+  };
+
+  const handleReset = () => {
+    setUsersFiltered(users);
+  };
+
   return (
     <>
       <div className="user">
         <h1>All Users</h1>
+
+        <div className="filter">
+          <input type="text" placeholder="Search" onChange={handleSearchChange}/>
+          <button className="btn btn-dark btn-sm mx-2 my-2" onClick={handleReset}>Reset</button>
+        </div>
+
         <div className="user-section table-responsive-sm">
           <table className="table table-bordered">
             <thead class="thead-dark">
@@ -53,7 +75,7 @@ const Users = () => {
 
             {/* This is the individual users */}
 
-            {users.map((user, index) => {
+            {usersFiltered.map((user, index) => {
               return <User user={user} key={index} fetchUsers={fetchUsers} />;
             })}
 
@@ -62,6 +84,8 @@ const Users = () => {
 
           <br />
         </div>
+
+        <p>**Showing <strong>{usersFiltered.length}</strong> Results**</p>
       </div>
     </>
   );

@@ -84,6 +84,13 @@ td h6{
   font-weight: 300;
 }
 
+.filter {
+  font-family: "Montserrat";
+  color: white;
+  font-weight: 300;
+  text-align: center;
+}
+
 @media (max-aspect-ratio: 9/10) {
   .user {
     padding: 1rem 0;

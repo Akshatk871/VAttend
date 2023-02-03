@@ -60,12 +60,6 @@ const Records = (props) => {
         return records.slice(0).reverse().slice(0, limit);
       };
 
-      const handleFilterRecords = () => {
-        setRecords(limitRecords(filterRecords(records)));
-      };
-
-
-
   return (
     <>
     <div className="record">
@@ -83,8 +77,6 @@ const Records = (props) => {
           <option value="100">100</option>
           <option value="all">All</option>
         </select>
-
-        <button className="btn btn-dark btn-sm mx-2" onClick={handleFilterRecords}>Filter</button>
       </div>
       <div className="record-section table-responsive-sm">
         <table className="table table-bordered">

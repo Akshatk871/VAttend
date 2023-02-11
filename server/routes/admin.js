@@ -4,6 +4,7 @@ require('dotenv').config();
 const expess = require('express');
 const router = expess.Router();
 const fetchuser = require("../middleware/fetchuser");
+const Present = require("../models/Present");
 const User = require('../models/User');
 const Record = require('../models/Record');
 
@@ -71,6 +72,12 @@ router.route("/fetchuser")
 
         let finduser = await User.findById(req.body.id, 'name employee_id date admin');
 
+        // checking if the user is present today
+        var presentUser = await Present.findOne({employee_id: req.body.id}).exec();
+
+        if(presentUser) presentUser = true;
+        else presentUser = false;
+
         if(!finduser){
             return res.status(400).json({error: "User Not Found!"});
         }
@@ -83,7 +90,8 @@ router.route("/fetchuser")
             employee_id: finduser.employee_id,
             admin: finduser.admin,
             date: date,
-            time: time
+            time: time,
+            present: presentUser
         }
         success = true;
         res.json({success, details});

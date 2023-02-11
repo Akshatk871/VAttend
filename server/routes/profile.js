@@ -4,10 +4,12 @@ require('dotenv').config();
 const expess = require('express');
 const router = expess.Router();
 const User = require("../models/User");
+const Present = require("../models/Present");
 const { body, validationResult} = require('express-validator');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const fetchuser = require('../middleware/fetchuser');
+
 
 const JWT_SECRET = process.env.JWT_SECRET;
 
@@ -35,6 +37,12 @@ router.route('/')
             return res.status(400).json({error: "User Not Found!"});
         }
 
+        // checking if the user is present today
+        var presentUser = await Present.findOne({employee_id: req.user.id}).exec();
+
+        if(presentUser) presentUser = true;
+        else presentUser = false;
+
         let date = user.date.toDateString();
         let time = user.date.toTimeString();
 
@@ -43,7 +51,8 @@ router.route('/')
             employee_id: user.employee_id,
             admin: user.admin,
             date: date,
-            time: time
+            time: time,
+            present: presentUser
         }
 
 

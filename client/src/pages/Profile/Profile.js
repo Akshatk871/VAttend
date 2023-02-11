@@ -29,7 +29,7 @@ const Profile = (props) => {
     time: "",
     admin: "",
   });
-  const { name, employee_id, date, time, admin } = account;
+  const { name, employee_id, date, time, admin, present } = account;
 
   // State for MAP
   const [map, updateMap] = useState(false);
@@ -111,6 +111,9 @@ const Profile = (props) => {
             </h5>
             <h5>
               Admin: <span className="info"> {admin?"Yes":"No"} </span>
+            </h5>
+            <h5>
+              TODAY: <span className="info"> {present?"Present":"Absent"} </span>
             </h5>
           </div>
         </div>
